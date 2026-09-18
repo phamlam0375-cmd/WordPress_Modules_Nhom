@@ -1,0 +1,55 @@
+/* Quy tắc chỉ áp dụng cho trang tìm kiếm và trang chi tiết. */
+.gcn-search, .gcn-single { background: #f7f7f7; padding: 48px 18px 70px; }
+.gcn-wrap { width: min(100%, 980px); margin: 0 auto; }
+.gcn-search-header { margin-bottom: 30px; }
+.gcn-search-header h1 { margin: 0 0 12px; color: #222; font-size: clamp(28px, 3vw, 42px); font-weight: 700; }
+.gcn-search-header p { color: #555; margin: 0 0 20px; font-size: 16px; }
+.gcn-search-header form { display: flex; align-items: stretch; max-width: 620px; }
+.gcn-search-header form label { flex: 1; min-width: 0; }
+.gcn-search-header input[type="search"] { width: 100%; min-width: 0; flex: 1; background: #fff; border: 1px solid #d4d4d4; font-size: 17px; padding: 12px 15px; }
+.gcn-search-header button, .gcn-search-header input[type="submit"] { background: #b50032; color: #fff; padding: 12px 18px; border: 0; white-space: nowrap; font-size: 15px; }
+.gcn-results { display: grid; gap: 16px; }
+.gcn-result-card { display: grid; grid-template-columns: 185px 90px minmax(0, 1fr); align-items: center; gap: 20px; min-height: 160px; background: #fff; border: 1px solid #e4e4e4; padding: 14px; box-shadow: 0 3px 12px #0000000b; }
+.gcn-result-image { display: block; height: 132px; overflow: hidden; background: #eef1f2; }
+.gcn-result-image img { width: 100%; height: 100%; object-fit: cover; margin: 0; }
+.gcn-image-placeholder { display: grid; place-items: center; height: 100%; color: #48515b; font-size: 17px; text-align: center; padding: 10px; }
+.gcn-result-date { align-self: stretch; display: flex; align-items: center; justify-content: center; text-align: center; border-right: 1px solid #ddd; padding-right: 16px; }
+.gcn-result-date strong { display: block; color: #292929; font-size: 38px; line-height: 1.1; font-weight: 500; }
+.gcn-result-date span { display: block; color: #7a7a7a; font-size: 11px; line-height: 1.5; letter-spacing: .04em; }
+.gcn-result-text { min-width: 0; }
+.gcn-result-text h2 { margin: 0 0 10px; color: #1e5a88; font-size: 20px; line-height: 1.35; font-weight: 700; }
+.gcn-result-text h2 a { color: inherit; text-decoration: none; }
+.gcn-result-text h2 a:hover { text-decoration: underline; }
+.gcn-result-text p { margin: 0; color: #555; font-size: 14px; line-height: 1.55; }
+.gcn-search .pagination { margin: 28px auto 0; }
+.gcn-no-results { background: #fff; padding: 24px; border: 1px solid #e4e4e4; font-size: 17px; }
+.gcn-single .gcn-wrap { max-width: 790px; }
+.gcn-detail-card { background: #fff; border: 1px solid #e4e4e4; padding: 35px clamp(22px, 5vw, 48px) 28px; box-shadow: 0 3px 12px #0000000b; }
+.gcn-detail-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; border-bottom: 1px solid #ddd; padding-bottom: 24px; margin-bottom: 26px; }
+.gcn-detail-header h1 { color: #222; font-size: clamp(28px, 4vw, 42px); line-height: 1.25; margin: 0; font-weight: 700; }
+.gcn-date-badge { flex: 0 0 78px; width: 78px; height: 78px; border-radius: 50%; background: #ffda39; color: #333; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; line-height: 1.15; }
+.gcn-date-badge strong { font-size: 21px; }
+.gcn-date-badge span { font-size: 10px; }
+.gcn-detail-image { margin: 0 0 26px; }
+.gcn-detail-image img { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+.gcn-detail-content { color: #333; font-size: 17px; line-height: 1.8; overflow-wrap: anywhere; }
+.gcn-detail-content > * { max-width: 100%; }
+.gcn-detail-content p { margin: 0 0 1.35em; }
+.gcn-detail-content img { max-width: 100%; height: auto; }
+.gcn-detail-footer { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid #ddd; margin-top: 28px; padding-top: 18px; font-size: 14px; }
+.gcn-detail-footer a { color: #b50032; }
+.gcn-comments { margin-top: 30px; background: #fff; padding: 20px; }
+@media (max-width: 700px) {
+  .gcn-search, .gcn-single { padding: 25px 12px 45px; }
+  .gcn-result-card { grid-template-columns: 100px minmax(0, 1fr); gap: 12px; padding: 12px; }
+  .gcn-result-image { height: 95px; }
+  .gcn-result-date { grid-column: 1; grid-row: 2; border-right: 0; padding: 0; }
+  .gcn-result-date strong { font-size: 28px; }
+  .gcn-result-text { grid-column: 2; grid-row: 1 / span 2; }
+  .gcn-result-text h2 { font-size: 16px; }
+  .gcn-result-text p { font-size: 13px; }
+  .gcn-detail-card { padding: 22px 18px; }
+  .gcn-date-badge { flex-basis: 62px; width: 62px; height: 62px; }
+  .gcn-detail-content { font-size: 16px; }
+  .gcn-detail-footer { flex-direction: column; }
+}
