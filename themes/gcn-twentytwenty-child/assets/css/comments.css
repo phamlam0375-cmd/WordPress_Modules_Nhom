@@ -1,0 +1,309 @@
+/* ============================================================
+   FIX BUG 1: Link dài viết liền — CHỈ áp dụng cho hiển thị comment
+   KHÔNG áp dụng cho textarea (gây lag khi nhập)
+   ============================================================ */
+.gcn-comment-list .comment-content,
+.gcn-comment-list .comment-content * {
+    overflow-wrap: break-word;
+    /* Chỉ ngắt khi cần */
+    word-wrap: break-word;
+    /* Fallback */
+}
+
+/* Fallback mạnh cho link dài — chỉ áp dụng cho thẻ <a> */
+.gcn-comment-list .comment-content a {
+    word-break: break-all;
+}
+
+/* ============================================================
+   FIX BUG 2: Khoảng trắng, xuống dòng thừa
+   ============================================================ */
+.gcn-comment-list .comment-content {
+    white-space: normal;
+    word-spacing: normal;
+    letter-spacing: normal;
+}
+
+.gcn-comment-list .comment-content p {
+    margin: 0 0 1em;
+}
+
+.gcn-comment-list .comment-content p:last-child {
+    margin-bottom: 0;
+}
+
+.gcn-comment-list .comment-content:empty::before {
+    content: "(Bình luận trống)";
+    color: #999;
+    font-style: italic;
+}
+
+/* ============================================================
+   FIX BUG 3: Comment quá dài — giới hạn chiều cao hiển thị
+   ============================================================ */
+.gcn-comment-list .comment-content {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.gcn-comment-list .comment-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.gcn-comment-list .comment-content::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+
+.gcn-comment-list .comment-content::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+/* ============================================================
+   FIX BUG 4: Emoji, ký tự đặc biệt
+   ============================================================ */
+.gcn-comment-list .comment-content,
+.gcn-comments-area .comment-form textarea {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, "Noto Sans", "Noto Color Emoji",
+        sans-serif;
+}
+
+/* ============================================================
+   GIAO DIỆN CHÍNH
+   ============================================================ */
+.gcn-comments-area {
+    margin-top: 40px;
+    padding: 30px;
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    box-shadow: 0 3px 12px #0000000b;
+}
+
+.gcn-comments-title,
+.gcn-comment-reply-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #222;
+    margin: 0 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #b50032;
+}
+
+.gcn-comment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px;
+}
+
+.gcn-comment-list ol.children {
+    list-style: none;
+    padding-left: 40px;
+    margin-top: 20px;
+}
+
+.gcn-comment-list li.comment {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.gcn-comment-list li.comment:last-child {
+    border-bottom: 0;
+}
+
+.gcn-comment-list .comment-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #222;
+}
+
+.gcn-comment-list .comment-author img {
+    border-radius: 50%;
+}
+
+.gcn-comment-list .comment-metadata {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 12px;
+}
+
+.gcn-comment-list .comment-content {
+    color: #333;
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+.gcn-comment-list .reply a {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #b50032;
+    text-decoration: none;
+}
+
+.gcn-comment-list .reply a:hover {
+    text-decoration: underline;
+}
+
+.gcn-comment-awaiting {
+    font-size: 13px;
+    color: #888;
+    font-style: italic;
+    margin: 8px 0 0;
+}
+
+/* ============================================================
+   FORM BÌNH LUẬN — FIX BUG: textarea không bị lag
+   ============================================================ */
+.gcn-comment-notes {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.gcn-comments-area .comment-form p {
+    margin-bottom: 18px;
+}
+
+.gcn-comments-area .comment-form label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.gcn-comments-area .comment-form input[type="text"],
+.gcn-comments-area .comment-form input[type="email"],
+.gcn-comments-area .comment-form input[type="url"],
+.gcn-comments-area .comment-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 15px;
+    border: 1px solid #d4d4d4;
+    background: #fafafa;
+    color: #333;
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+}
+
+.gcn-comments-area .comment-form input:focus,
+.gcn-comments-area .comment-form textarea:focus {
+    outline: none;
+    border-color: #b50032;
+    background: #fff;
+}
+
+/* ✅ FIX BUG: Textarea không bị lag khi nhập chuỗi dài */
+.gcn-comments-area .comment-form textarea {
+    min-height: 140px;
+    resize: vertical;
+
+    /* Chỉ dùng thuộc tính cơ bản, không gây lag */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+
+    /* KHÔNG dùng: overflow-wrap: anywhere, word-break: break-all, hyphens: auto */
+}
+
+.gcn-submit-btn,
+.gcn-comments-area .submit {
+    background: #b50032;
+    color: #fff;
+    border: 0;
+    padding: 12px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.gcn-submit-btn:hover,
+.gcn-comments-area .submit:hover {
+    background: #8a0026;
+}
+
+.gcn-comments-closed {
+    background: #fff;
+    padding: 20px;
+    border-left: 4px solid #b50032;
+    color: #666;
+    font-style: italic;
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+@media (max-width: 700px) {
+    .gcn-comments-area {
+        padding: 20px 16px;
+    }
+
+    .gcn-comment-list ol.children {
+        padding-left: 20px;
+    }
+
+    .gcn-comments-title,
+    .gcn-comment-reply-title {
+        font-size: 18px;
+    }
+
+    .gcn-comments-area .comment-form input[type="text"],
+    .gcn-comments-area .comment-form input[type="email"],
+    .gcn-comments-area .comment-form input[type="url"],
+    .gcn-comments-area .comment-form textarea {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+
+    .gcn-submit-btn,
+    .gcn-comments-area .submit {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .gcn-comment-list .comment-content {
+        max-height: 300px;
+    }
+}
+
+/* Xử lý dòng thông báo đăng nhập của WordPress */
+.gcn-comments-area .logged-in-as,
+.gcn-comments-area .comment-notes,
+.gcn-comments-area .must-log-in {
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 12px;
+    line-height: 1.5;
+}
+
+/* Link trong dòng thông báo */
+.gcn-comments-area .logged-in-as a {
+    color: #b50032;
+    text-decoration: underline;
+}
+
+.gcn-comments-area .logged-in-as a:hover {
+    color: #8a0026;
+}
+
+/* Đảm bảo tiêu đề không bị đè */
+.gcn-comment-reply-title {
+    margin-top: 0;
+    margin-bottom: 16px;
+    clear: both;
+}
+
+/* Khoảng cách giữa các phần trong form */
+.gcn-comments-area .comment-form {
+    margin-top: 0;
+}
+
+.gcn-comments-area .comment-form>p:first-of-type {
+    margin-top: 0;
+}
