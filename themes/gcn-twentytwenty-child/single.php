@@ -30,28 +30,51 @@ get_header();
 			</article>
 
 			<?php
-			$next_post = get_previous_post();
-			$prev_post = get_next_post();
-			?>
+			// Lấy danh sách bài viết cùng chuyên mục (trừ bài hiện tại).
+			$current_id = get_the_ID();
+			$categories = get_the_category();
+			$cat_ids    = array();
 
-			<?php if ($prev_post || $next_post) : ?>
-				<nav class="gcn-post-navigation" aria-label="Điều hướng bài viết">
+			if (! empty($categories)) {
+				foreach ($categories as $cat) {
+					$cat_ids[] = $cat->term_id;
+				}
+			}
 
-					<?php if ($prev_post) : ?>
-						<a class="gcn-nav-prev" href="<?php echo esc_url(get_permalink($prev_post)); ?>">
-							<span class="gcn-nav-label">← Previous post</span>
-							<span class="gcn-nav-title"><?php echo esc_html(get_the_title($prev_post)); ?></span>
-						</a>
-					<?php endif; ?>
+			// Chỉ chạy query nếu bài viết có chuyên mục.
+			if (! empty($cat_ids)) :
 
-					<?php if ($next_post) : ?>
-						<a class="gcn-nav-next" href="<?php echo esc_url(get_permalink($next_post)); ?>">
-							<span class="gcn-nav-label">Next post →</span>
-							<span class="gcn-nav-title"><?php echo esc_html(get_the_title($next_post)); ?></span>
-						</a>
-					<?php endif; ?>
+				$related_args = array(
+					'post_type'           => 'post',
+					'posts_per_page'      => 8,
+					'post__not_in'        => array($current_id),
+					'category__in'        => $cat_ids,
+					'orderby'             => 'date',
+					'order'               => 'DESC',
+					'no_found_rows'       => true,
+					'update_post_meta_cache' => false,
+					'update_post_term_cache' => false,
+				);
 
-				</nav>
+				$related_query = new WP_Query($related_args);
+
+				if ($related_query->have_posts()) : ?>
+
+					<section class="gcn-related-posts" aria-label="Bài viết cùng chuyên mục">
+
+						<h2 class="gcn-related-title">Bài viết cùng chuyên mục</h2>
+
+						<div class="gcn-post-list">
+							<?php while ($related_query->have_posts()) : $related_query->the_post(); ?>
+								<?php get_template_part('template-parts/item-list'); ?>
+							<?php endwhile; ?>
+						</div>
+
+					</section>
+
+				<?php endif; ?>
+				<?php wp_reset_postdata();
+				?>
 			<?php endif; ?>
 
 			<?php if (comments_open() || get_comments_number()) : ?>
