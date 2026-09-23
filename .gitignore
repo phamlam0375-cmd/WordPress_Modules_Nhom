@@ -1,9 +1,29 @@
+# WordPress configuration
 wp-config.php
-*.sql
+
+# Environment and secrets
 .env
 .env.*
 *.pem
 *.key
+
+# Archives and logs
 *.zip
+*.log
+
+# Temporary and cache
+wp-content/cache/
+wp-content/upgrade/
+wp-content/backups/
+wp-content/ai1wm-backups/
+
+# Operating system
 Thumbs.db
 .DS_Store
+
+# Ignore SQL by default
+*.sql
+
+# Allow the shared group database
+!database/
+!database/wordpress_group.sql
