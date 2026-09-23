@@ -15,6 +15,10 @@ get_header();
 						<span><?php echo esc_html(get_the_date('Y')); ?></span>
 					</time>
 				</header>
+				<?php
+				// ⬇️ NÚT CHIA SẺ + DROPDOWN.
+				get_template_part('template-parts/share-dropdown');
+				?>
 				<?php if (has_post_thumbnail()) : ?>
 					<figure class="gcn-detail-image"><?php the_post_thumbnail('large'); ?></figure>
 				<?php endif; ?>

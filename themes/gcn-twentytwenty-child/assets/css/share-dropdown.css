@@ -1,0 +1,205 @@
+/* ============================================================
+   SHARE DROPDOWN — Nút chia sẻ + menu dropdown
+   Gọn gàng, không chiếm chỗ, không vỡ layout
+   ============================================================ */
+
+/* --- Wrapper (nút + dropdown) --- */
+.gcn-share-wrap {
+    position: relative;
+    display: inline-block;
+}
+
+/* --- Nút "Chia sẻ" --- */
+.gcn-share-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: #fff;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-family: inherit;
+    line-height: 1;
+}
+
+.gcn-share-toggle:hover {
+    background: #f5f5f5;
+    border-color: #999;
+}
+
+.gcn-share-toggle:focus {
+    outline: 2px solid #b50032;
+    outline-offset: 2px;
+}
+
+.gcn-share-toggle svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+.gcn-share-toggle .gcn-share-toggle-text {
+    white-space: nowrap;
+}
+
+/* --- Dropdown menu --- */
+.gcn-share-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 200px;
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    padding: 6px;
+    z-index: 100;
+
+    /* Ẩn mặc định */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.15s ease, visibility 0.15s ease, transform 0.15s ease;
+}
+
+/* Khi mở */
+.gcn-share-wrap.is-open .gcn-share-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* --- Item trong menu --- */
+.gcn-share-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 9px 12px;
+    border: 0;
+    background: transparent;
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.12s ease;
+    font-family: inherit;
+    text-align: left;
+    line-height: 1.3;
+}
+
+.gcn-share-item:hover {
+    background: #f5f5f5;
+    color: #333;
+    text-decoration: none;
+}
+
+/* Icon trong item */
+.gcn-share-item-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.gcn-share-item-icon svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+    display: block;
+}
+
+/* Màu icon từng mạng */
+.gcn-icon-facebook {
+    background: #1877f2;
+}
+
+.gcn-icon-twitter {
+    background: #000000;
+}
+
+.gcn-icon-linkedin {
+    background: #0a66c2;
+}
+
+.gcn-icon-zalo {
+    background: #0068ff;
+}
+
+.gcn-icon-telegram {
+    background: #0088cc;
+}
+
+.gcn-icon-email {
+    background: #666666;
+}
+
+.gcn-icon-copy {
+    background: #333333;
+}
+
+/* Label trong item */
+.gcn-share-item-label {
+    flex: 1;
+}
+
+/* --- Toast thông báo copy --- */
+.gcn-share-toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #222;
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.gcn-share-toast.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Mobile --- */
+@media (max-width: 700px) {
+    .gcn-share-toggle {
+        padding: 7px 12px;
+        font-size: 13px;
+    }
+
+    .gcn-share-toggle .gcn-share-toggle-text {
+        display: none;
+        /* Mobile chỉ hiện icon */
+    }
+
+    .gcn-share-menu {
+        right: auto;
+        left: 0;
+        min-width: 180px;
+    }
+
+    .gcn-share-toast {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        text-align: center;
+    }
+}
