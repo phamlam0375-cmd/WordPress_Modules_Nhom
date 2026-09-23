@@ -56,9 +56,36 @@ function gcn_twentytwenty_enqueue_styles()
 			array('gcn-search-detail'),
 			'1.0.0'
 		);
+
+		// CSS share-dropdown — chỉ nạp ở single post.
+		wp_enqueue_style(
+			'gcn-share-dropdown',
+			get_stylesheet_directory_uri() . '/assets/css/share-dropdown.css',
+			array('gcn-search-detail'),
+			'1.0.0'
+		);
 	}
 }
 add_action('wp_enqueue_scripts', 'gcn_twentytwenty_enqueue_styles', 20);
+/* ============================================================
+   1b. ENQUEUE JS — Share Dropdown
+   ============================================================ */
+
+function gcn_enqueue_share_dropdown_script()
+{
+	if (! is_singular('post')) {
+		return;
+	}
+
+	wp_enqueue_script(
+		'gcn-share-dropdown',
+		get_stylesheet_directory_uri() . '/assets/js/share-dropdown.js',
+		array(),
+		'1.0.0',
+		true
+	);
+}
+add_action('wp_enqueue_scripts', 'gcn_enqueue_share_dropdown_script', 20);
 
 /* ============================================================
    2. TEMPLATE COMMENT — Callback cho wp_list_comments
