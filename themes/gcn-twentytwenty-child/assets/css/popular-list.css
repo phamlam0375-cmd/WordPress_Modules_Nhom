@@ -1,0 +1,135 @@
+/* ============================================================
+   POPULAR LIST — Danh sách "Xem nhiều"
+   Layout: 2 cột, số thứ tự lớn bên trái, tiêu đề bên phải
+   ============================================================ */
+
+/* --- Khung tổng --- */
+.gcn-popular {
+    margin: 32px 0 40px;
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    padding: 20px 24px 8px;
+    box-shadow: 0 3px 12px #0000000b;
+}
+
+/* --- Tiêu đề khối --- */
+.gcn-popular-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #222;
+    margin: 0 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* --- Grid 2 cột --- */
+.gcn-popular-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+    row-gap: 0;
+}
+
+/* --- Mỗi item --- */
+.gcn-popular-item {
+    display: grid;
+    grid-template-columns: 60px minmax(0, 1fr);
+    align-items: start;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* Item cuối mỗi cột không có border */
+.gcn-popular-item:nth-last-child(-n+2) {
+    border-bottom: 0;
+}
+
+/* --- Số thứ tự --- */
+.gcn-popular-number {
+    font-size: 60px;
+    font-weight: 400;
+    color: #1a1a1a;
+    line-height: 1;
+    text-align: center;
+    letter-spacing: -0.04em;
+    font-family: Georgia, "Times New Roman", serif;
+    padding-top: 2px;
+}
+
+/* --- Tiêu đề bài viết --- */
+.gcn-popular-item-title {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.45;
+    font-weight: 400;
+    padding-top: 6px;
+}
+
+.gcn-popular-item-title a {
+    color: #222;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.gcn-popular-item-title a:hover {
+    color: #b50032;
+    text-decoration: underline;
+}
+
+/* Số bình luận (tùy chọn — giống hình) */
+.gcn-popular-comment-count {
+    display: inline-block;
+    margin-left: 6px;
+    font-size: 12px;
+    color: #888;
+    vertical-align: middle;
+}
+
+.gcn-popular-comment-count::before {
+    content: "💬 ";
+    font-size: 11px;
+}
+
+/* ============================================================
+   MOBILE — Chuyển về 1 cột
+   ============================================================ */
+@media (max-width: 700px) {
+    .gcn-popular {
+        padding: 16px 16px 4px;
+        margin: 24px 0 32px;
+    }
+
+    .gcn-popular-title {
+        font-size: 17px;
+    }
+
+    .gcn-popular-grid {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+    }
+
+    /* Mobile: item cuối cùng không border */
+    .gcn-popular-item:nth-last-child(-n+2) {
+        border-bottom: 1px solid #eee;
+    }
+
+    .gcn-popular-item:last-child {
+        border-bottom: 0;
+    }
+
+    .gcn-popular-item {
+        grid-template-columns: 50px minmax(0, 1fr);
+        gap: 12px;
+        padding: 14px 0;
+    }
+
+    .gcn-popular-number {
+        font-size: 44px;
+    }
+
+    .gcn-popular-item-title {
+        font-size: 14px;
+        padding-top: 4px;
+    }
+}

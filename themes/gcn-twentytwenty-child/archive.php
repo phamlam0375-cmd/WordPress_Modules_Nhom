@@ -10,6 +10,11 @@ get_header();
             <?php the_archive_description('<div class="gcn-archive-desc">', '</div>'); ?>
         </header>
 
+        <?php
+        // ⬇️ KHỐI "XEM NHIỀU" — hiển thị phía trên danh sách chính.
+        get_template_part('template-parts/popular-posts');
+        ?>
+
         <?php if (have_posts()) : ?>
 
             <div class="gcn-post-list">

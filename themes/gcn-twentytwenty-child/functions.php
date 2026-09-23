@@ -39,6 +39,14 @@ function gcn_twentytwenty_enqueue_styles()
 		array('gcn-search-detail'),
 		'1.0.0'
 	);
+	if (is_archive()) {
+		wp_enqueue_style(
+			'gcn-popular-list',
+			get_stylesheet_directory_uri() . '/assets/css/popular-list.css',
+			array('gcn-post-list'),
+			'1.0.0'
+		);
+	}
 
 	// CSS comments — CHỈ nạp ở trang single post
 	if (is_singular('post')) {
