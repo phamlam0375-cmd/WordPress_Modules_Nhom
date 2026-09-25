@@ -1,0 +1,184 @@
+.gcn-widget-test-4 {
+    margin: 40px 0 20px;
+    padding: 0;
+    background: transparent;
+}
+
+/* --- Tiêu đề widget (mặc định của theme cha) --- */
+.gcn-widget-test-4 .widget-title,
+.gcn-widget-test-4 h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #222;
+    margin: 0 0 18px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #b50032;
+}
+
+/* --- Danh sách --- */
+.gcn-widget-test-4-list {
+    display: grid;
+    gap: 0;
+}
+
+/* --- Mỗi item --- */
+.gcn-w4-item {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.gcn-w4-item:last-child {
+    border-bottom: 0;
+}
+
+/* --- Ảnh thumbnail --- */
+.gcn-w4-thumb {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #eef1f2;
+    text-decoration: none;
+}
+
+.gcn-w4-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gcn-w4-item:hover .gcn-w4-thumb img {
+    transform: scale(1.04);
+}
+
+.gcn-w4-thumb-placeholder {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    color: #48515b;
+    font-size: 15px;
+    text-align: center;
+    padding: 10px;
+}
+
+/* --- Nội dung bên phải --- */
+.gcn-w4-content {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* --- Tiêu đề bài viết --- */
+.gcn-w4-title {
+    margin: 0;
+    font-size: 20px;
+    line-height: 1.35;
+    font-weight: 700;
+}
+
+.gcn-w4-title a {
+    color: #222;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.gcn-w4-title a:hover {
+    color: #b50032;
+}
+
+/* --- Meta (nguồn · thời gian · bình luận) --- */
+.gcn-w4-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 13px;
+    color: #888;
+}
+
+.gcn-w4-source {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: #888;
+    font-weight: 500;
+}
+
+.gcn-w4-source-dot {
+    width: 8px;
+    height: 8px;
+    background: #b50032;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.gcn-w4-source-name {
+    color: #b50032;
+    font-weight: 600;
+}
+
+.gcn-w4-source:hover .gcn-w4-source-name {
+    text-decoration: underline;
+}
+
+.gcn-w4-time,
+.gcn-w4-comments {
+    color: #888;
+}
+
+.gcn-w4-time::before,
+.gcn-w4-comments::before {
+    content: "· ";
+    margin-right: 2px;
+    color: #ccc;
+}
+
+/* --- Mô tả --- */
+.gcn-w4-excerpt {
+    margin: 4px 0 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: #555;
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+@media (max-width: 700px) {
+    .gcn-widget-test-4 {
+        margin: 28px 0 16px;
+    }
+
+    .gcn-widget-test-4 .widget-title,
+    .gcn-widget-test-4 h2 {
+        font-size: 17px;
+        margin-bottom: 14px;
+    }
+
+    .gcn-w4-item {
+        grid-template-columns: 120px minmax(0, 1fr);
+        gap: 14px;
+        padding: 14px 0;
+    }
+
+    .gcn-w4-title {
+        font-size: 16px;
+    }
+
+    .gcn-w4-meta {
+        font-size: 12px;
+        gap: 8px;
+    }
+
+    .gcn-w4-excerpt {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+}

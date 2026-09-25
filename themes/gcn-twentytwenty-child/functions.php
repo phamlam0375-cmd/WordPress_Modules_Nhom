@@ -65,6 +65,15 @@ function gcn_twentytwenty_enqueue_styles()
 			'1.0.0'
 		);
 	}
+	// CSS widget-test-4 — nạp ở trang chủ, archive, single.
+	if (is_home() || is_front_page() || is_archive() || is_singular('post')) {
+		wp_enqueue_style(
+			'gcn-widget-test-4',
+			get_stylesheet_directory_uri() . '/assets/css/widget-test-4.css',
+			array('gcn-search-detail'),
+			'1.0.0'
+		);
+	}
 }
 add_action('wp_enqueue_scripts', 'gcn_twentytwenty_enqueue_styles', 20);
 /* ============================================================
@@ -223,3 +232,30 @@ function gcn_twentytwenty_search_posts_only($query)
 	}
 }
 add_action('pre_get_posts', 'gcn_twentytwenty_search_posts_only');
+/* ============================================================
+   7. ĐĂNG KÝ SIDEBAR — Phía trên Footer
+   ============================================================ */
+
+function gcn_register_above_footer_sidebar()
+{
+	register_sidebar(array(
+		'name'          => 'Phía trên Footer (GCN)',
+		'id'            => 'gcn-above-footer',
+		'description'   => 'Khu vực widget hiển thị phía trên Footer. Dùng cho widget_test_4.',
+		'before_widget' => '<section id="%1$s" class="widget gcn-widget-test-4 %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	));
+}
+add_action('widgets_init', 'gcn_register_above_footer_sidebar');
+/* ============================================================
+   8. ĐĂNG KÝ WIDGET — widget_test_4
+   ============================================================ */
+
+function gcn_register_widget_test_4()
+{
+	require_once get_stylesheet_directory() . '/inc/widgets/class-widget-test-4.php';
+	register_widget('GCN_Widget_Test_4');
+}
+add_action('widgets_init', 'gcn_register_widget_test_4');
