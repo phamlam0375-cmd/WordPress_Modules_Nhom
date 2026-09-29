@@ -53,6 +53,16 @@ if ( ! function_exists( 'gcn_twentytwenty_enqueue_styles' ) ) {
 			$module_header_version
 		);
 
+		$module_comments_path    = get_stylesheet_directory() . '/modules/module-14/comments.css';
+		$module_comments_version = is_readable( $module_comments_path ) ? (string) filemtime( $module_comments_path ) : $child_theme->get( 'Version' );
+
+		wp_enqueue_style(
+			'gcn-module-14-comments',
+			get_stylesheet_directory_uri() . '/modules/module-14/comments.css',
+			array( 'gcn-module-01-header' ),
+			$module_comments_version
+		);
+
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script(
 			'gcn-module-01-bootstrap',

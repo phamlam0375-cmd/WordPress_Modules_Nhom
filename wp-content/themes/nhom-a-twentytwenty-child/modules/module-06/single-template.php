@@ -27,7 +27,15 @@ get_header();
 				</footer>
 			</article>
 			<?php if ( comments_open() || get_comments_number() ) : ?>
-				<div class="gcn-comments"><?php comments_template(); ?></div>
+				<div class="gcn-comments">
+					<?php
+					$module_comments = get_stylesheet_directory() . '/modules/module-14/comments.php';
+
+					if ( is_readable( $module_comments ) ) {
+						require $module_comments;
+					}
+					?>
+				</div>
 			<?php endif; ?>
 		<?php endwhile; ?>
 	</div>

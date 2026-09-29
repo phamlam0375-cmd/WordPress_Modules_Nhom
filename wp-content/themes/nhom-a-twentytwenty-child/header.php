@@ -1,18 +1,22 @@
 <?php
 /**
- * Nạp header module 01 trên mọi template dùng get_header().
+ * Header module 01 dùng chung cho các template của theme con.
  */
+?><!DOCTYPE html>
+<html class="no-js" <?php language_attributes(); ?>>
+<head>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<?php wp_head(); ?>
+</head>
+<body <?php body_class(); ?>>
+	<?php wp_body_open(); ?>
 
-if ( ! function_exists( 'nhom_a_module_01_header' ) ) {
-	function nhom_a_module_01_header() {
-		$module_header = get_stylesheet_directory() . '/modules/module-01/header.php';
+	<?php
+	$module_header = get_stylesheet_directory() . '/modules/module-01/header.php';
 
-		if ( is_readable( $module_header ) ) {
-			require $module_header;
-		}
+	if ( is_readable( $module_header ) ) {
+		require $module_header;
 	}
-}
-
-add_action( 'wp_body_open', 'nhom_a_module_01_header', 5 );
-
-require get_template_directory() . '/header.php';
+	?>
