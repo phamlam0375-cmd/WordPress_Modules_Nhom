@@ -35,6 +35,32 @@ if ( ! function_exists( 'gcn_twentytwenty_enqueue_styles' ) ) {
 			array( 'nhom-a-twentytwenty-child' ),
 			$layout_version
 		);
+
+		$module_header_path    = get_stylesheet_directory() . '/modules/module-01/header.css';
+		$module_header_version = is_readable( $module_header_path ) ? (string) filemtime( $module_header_path ) : $child_theme->get( 'Version' );
+
+		wp_enqueue_style(
+			'gcn-module-01-bootstrap',
+			'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css',
+			array( 'gcn-search-detail' ),
+			'3.3.0'
+		);
+
+		wp_enqueue_style(
+			'gcn-module-01-header',
+			get_stylesheet_directory_uri() . '/modules/module-01/header.css',
+			array( 'gcn-module-01-bootstrap' ),
+			$module_header_version
+		);
+
+		wp_enqueue_script( 'jquery' );
+		wp_enqueue_script(
+			'gcn-module-01-bootstrap',
+			'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js',
+			array( 'jquery' ),
+			'3.3.0',
+			true
+		);
 	}
 }
 
