@@ -1,7 +1,4 @@
 <?php
-/**
- * Header module 01 dùng chung cho các template của theme con.
- */
 ?><!DOCTYPE html>
 <html class="no-js" <?php language_attributes(); ?>>
 <head>
