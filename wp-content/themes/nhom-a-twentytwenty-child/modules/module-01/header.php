@@ -50,9 +50,9 @@
                         </a>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-left">
+                <form class="navbar-form navbar-left" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="search" class="form-control" name="s" placeholder="Search" value="<?php echo esc_attr( get_search_query() ); ?>">
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
