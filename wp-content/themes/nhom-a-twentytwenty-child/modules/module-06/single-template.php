@@ -26,6 +26,15 @@ get_header();
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>">← Về trang chủ</a>
 				</footer>
 			</article>
+
+			<!-- GẮN MODULE 17 (TÁC GIẢ BÀI VIẾT) Ở ĐÂY -->
+            <?php 
+            $module_17_path = get_stylesheet_directory() . '/modules/module-17/author-box.php';
+            if ( file_exists( $module_17_path ) ) {
+                include $module_17_path;
+            }
+            ?>
+			
 			<?php if ( comments_open() || get_comments_number() ) : ?>
 				<div class="gcn-comments">
 					<?php
