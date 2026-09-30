@@ -103,6 +103,36 @@ if (! function_exists('gcn_twentytwenty_enqueue_styles')) {
 			array('nhom-a-twentytwenty-child'),
 			$module_08_css_version
 		);
+
+		// Nạp CSS & JS cho Module 16 (Social Share)
+		$module_16_css_path    = get_stylesheet_directory() . '/modules/module-16/style.css';
+		$module_16_css_version = is_readable($module_16_css_path) ? (string) filemtime($module_16_css_path) : $child_theme->get('Version');
+
+		wp_enqueue_style(
+			'gcn-module-16-share',
+			get_stylesheet_directory_uri() . '/modules/module-16/style.css',
+			array('nhom-a-twentytwenty-child'),
+			$module_16_css_version
+		);
+
+		$module_16_js_path    = get_stylesheet_directory() . '/modules/module-16/script.js';
+		$module_16_js_version = is_readable($module_16_js_path) ? (string) filemtime($module_16_js_path) : $child_theme->get('Version');
+
+		wp_enqueue_script(
+			'gcn-module-16-share',
+			get_stylesheet_directory_uri() . '/modules/module-16/script.js',
+			array(),
+			$module_16_js_version,
+			true
+		);
+		// Nạp Font Awesome (nếu chưa có)
+		wp_enqueue_style(
+			'gcn-font-awesome',
+			'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css',
+			array(),
+			'6.5.1'
+		);
+		// ============================================
 	}
 }
 
