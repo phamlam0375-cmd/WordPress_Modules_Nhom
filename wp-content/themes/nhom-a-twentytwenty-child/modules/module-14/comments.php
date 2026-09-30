@@ -1,9 +1,10 @@
 <?php
+
 /**
  * Module 14: danh sách bình luận và form gửi bình luận.
  */
 
-if ( post_password_required() ) {
+if (post_password_required()) {
 	return;
 }
 
@@ -17,10 +18,10 @@ $module_comments = get_comments(
 ?>
 <section class="module-14-comments" aria-labelledby="module-14-comments-title">
 	<h2 id="module-14-comments-title" class="module-14-comments-title">
-		<?php comments_number( 'Chưa có bình luận', '1 bình luận', '% bình luận' ); ?>
+		<?php comments_number('Chưa có bình luận', '1 bình luận', '% bình luận'); ?>
 	</h2>
 
-	<?php if ( ! empty( $module_comments ) ) : ?>
+	<?php if (! empty($module_comments)) : ?>
 		<ol class="module-14-comment-list">
 			<?php
 			wp_list_comments(
@@ -37,7 +38,7 @@ $module_comments = get_comments(
 		<?php the_comments_navigation(); ?>
 	<?php endif; ?>
 
-	<?php if ( comments_open() ) : ?>
+	<?php if (comments_open()) : ?>
 		<div class="module-14-comment-form">
 			<?php
 			comment_form(
