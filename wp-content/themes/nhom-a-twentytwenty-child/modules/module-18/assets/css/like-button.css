@@ -1,0 +1,127 @@
+.module18-like {
+	margin: 2rem 0 0;
+	padding: 1rem 1.1rem;
+	border: 1px solid #e3e8ee;
+	border-radius: 14px;
+	background: #f8fafc;
+	color: #465463;
+}
+
+.module18-like-row {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.65rem;
+}
+
+.module18-like-button,
+.module18-login-link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.45rem;
+	min-height: 42px;
+	box-sizing: border-box;
+	padding: 0.65rem 1rem;
+	border: 1px solid #d4dce5;
+	border-radius: 999px;
+	background: #fff;
+	color: #334155;
+	font: inherit;
+	font-size: 0.95rem;
+	font-weight: 700;
+	line-height: 1;
+	text-decoration: none;
+	transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.module18-like-button {
+	cursor: pointer;
+}
+
+.module18-like-button:hover,
+.module18-like-button:focus-visible,
+.module18-login-link:hover,
+.module18-login-link:focus-visible {
+	border-color: #be123c;
+	color: #be123c;
+	transform: translateY(-1px);
+}
+
+.module18-like-button:disabled {
+	cursor: wait;
+	opacity: 0.62;
+	transform: none;
+}
+
+.module18-heart {
+	color: #be123c;
+	font-size: 1.25rem;
+	line-height: 1;
+}
+
+.module18-is-liked .module18-like-button {
+	border-color: #be123c;
+	background: #be123c;
+	color: #fff;
+}
+
+.module18-is-liked .module18-heart {
+	color: #fff;
+}
+
+.module18-separator {
+	color: #94a3b8;
+}
+
+.module18-like-count {
+	font-size: 0.95rem;
+	font-weight: 600;
+}
+
+.module18-message {
+	min-height: 1.25em;
+	margin: 0.65rem 0 0;
+	font-size: 0.85rem;
+}
+
+.module18-message:empty {
+	display: none;
+}
+
+.module18-message-success {
+	color: #166534;
+}
+
+.module18-message-error {
+	color: #b91c1c;
+}
+
+.module18-inline-login-link {
+	color: inherit;
+	font-weight: 700;
+}
+
+@media (max-width: 520px) {
+	.module18-like {
+		padding: 0.9rem;
+	}
+
+	.module18-like-row {
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	.module18-like-button,
+	.module18-login-link {
+		width: 100%;
+	}
+
+	.module18-separator {
+		display: none;
+	}
+
+	.module18-like-count {
+		text-align: center;
+	}
+}
