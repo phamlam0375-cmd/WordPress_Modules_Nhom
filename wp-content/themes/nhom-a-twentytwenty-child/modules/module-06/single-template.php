@@ -42,6 +42,13 @@ get_header();
 				include $module_17_path;
 			}
 			?>
+
+			<!-- Module 08: Comments Form -->
+			<?php
+			if (function_exists('gcn_render_module_08_comments')) {
+				gcn_render_module_08_comments();
+			}
+			?>
 		<?php endwhile; ?>
 	</div>
 </main>

@@ -93,6 +93,16 @@ if (! function_exists('gcn_twentytwenty_enqueue_styles')) {
 			array('nhom-a-twentytwenty-child'),
 			$module_11_css_version
 		);
+		// Nạp CSS cho Module 08 (Comments Form)
+		$module_08_css_path    = get_stylesheet_directory() . '/modules/module-08/style.css';
+		$module_08_css_version = is_readable($module_08_css_path) ? (string) filemtime($module_08_css_path) : $child_theme->get('Version');
+
+		wp_enqueue_style(
+			'gcn-module-08-comments',
+			get_stylesheet_directory_uri() . '/modules/module-08/style.css',
+			array('nhom-a-twentytwenty-child'),
+			$module_08_css_version
+		);
 	}
 }
 
