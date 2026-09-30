@@ -1,0 +1,56 @@
+.m14-side-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.m14-side-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px dashed #ddd;
+}
+
+.m14-side-item:last-child {
+    border-bottom: 0;
+}
+
+.m14-side-avatar img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.m14-side-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.m14-side-name {
+    display: block;
+    font-size: 15px;
+    color: #333;
+}
+
+.m14-side-date {
+    display: block;
+    font-size: 12px;
+    color: #888;
+}
+
+.m14-side-text {
+    margin-top: 6px;
+    padding: 8px 10px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    word-break: break-word;
+}
+
+.m14-side-link {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 12px;
+    text-decoration: none;
+}

@@ -1,0 +1,95 @@
+/* Container chính của Author Box */
+.module-author-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #1d4ed8; /* Vạch màu xanh làm điểm nhấn bên trái */
+    border-radius: 8px;
+    padding: 20px;
+    margin: 25px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Avatar tác giả */
+.module-author-box .author-avatar img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    display: block;
+}
+
+/* Thông tin tác giả */
+.module-author-box .author-info {
+    flex: 1;
+}
+
+.module-author-box .author-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #2563eb;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.module-author-box .author-name {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.module-author-box .author-name a {
+    color: #1e293b;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.module-author-box .author-name a:hover {
+    color: #2563eb;
+}
+
+.module-author-box .author-bio {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.5;
+    margin: 0 0 12px 0;
+}
+
+/* Thông số phụ */
+.module-author-box .author-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #475569;
+    border-top: 1px dashed #cbd5e1;
+    padding-top: 10px;
+}
+
+.module-author-box .view-more-posts {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.module-author-box .view-more-posts:hover {
+    text-decoration: underline;
+}
+
+/* Responsive cho màn hình nhỏ/điện thoại */
+@media (max-width: 576px) {
+    .module-author-box {
+        flex-direction: column;
+        text-align: center;
+    }
+    .module-author-box .author-meta {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
