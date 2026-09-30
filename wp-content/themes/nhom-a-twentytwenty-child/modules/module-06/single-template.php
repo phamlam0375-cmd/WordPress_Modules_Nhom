@@ -26,6 +26,19 @@ get_header();
 					<span>Danh mục: <?php the_category(', '); ?></span>
 					<a href="<?php echo esc_url(home_url('/')); ?>">← Về trang chủ</a>
 				</footer>
+				<!-- Module 16: Social Share -->
+				<?php
+				if (function_exists('gcn_render_module_16_social_share')) {
+					gcn_render_module_16_social_share();
+				}
+				?>
+
+				<!-- Module 07: Prev/Next Post -->
+				<?php
+				if (function_exists('gcn_render_module_07_prev_next')) {
+					gcn_render_module_07_prev_next();
+				}
+				?>
 			</article>
 
 			<!-- Module 07: Prev/Next Post -->
