@@ -84,6 +84,16 @@ if (! function_exists('gcn_twentytwenty_enqueue_styles')) {
 			'3.3.0',
 			true
 		);
+		// Nạp CSS cho Module 11 (Archive)
+		$module_11_css_path    = get_stylesheet_directory() . '/modules/module-11/style.css';
+		$module_11_css_version = is_readable($module_11_css_path) ? (string) filemtime($module_11_css_path) : $child_theme->get('Version');
+
+		wp_enqueue_style(
+			'gcn-module-11-archive',
+			get_stylesheet_directory_uri() . '/modules/module-11/style.css',
+			array('nhom-a-twentytwenty-child'),
+			$module_11_css_version
+		);
 	}
 }
 

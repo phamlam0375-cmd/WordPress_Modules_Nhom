@@ -27,13 +27,15 @@ get_header();
 					<a href="<?php echo esc_url(home_url('/')); ?>">← Về trang chủ</a>
 				</footer>
 			</article>
-			<!-- Liên kết với module #7 -->
+
+			<!-- Module 07: Prev/Next Post -->
 			<?php
 			if (function_exists('gcn_render_module_07_prev_next')) {
 				gcn_render_module_07_prev_next();
 			}
 			?>
-			<!-- GẮN MODULE 17 (TÁC GIẢ BÀI VIẾT) Ở ĐÂY -->
+
+			<!-- Module 17: Author Box -->
 			<?php
 			$module_17_path = get_stylesheet_directory() . '/modules/module-17/author-box.php';
 			if (file_exists($module_17_path)) {
@@ -41,11 +43,11 @@ get_header();
 			}
 			?>
 
+			<!-- Module 14: Comments -->
 			<?php if (comments_open() || get_comments_number()) : ?>
 				<div class="gcn-comments">
 					<?php
 					$module_comments = get_stylesheet_directory() . '/modules/module-14/comments.php';
-
 					if (is_readable($module_comments)) {
 						require $module_comments;
 					}
