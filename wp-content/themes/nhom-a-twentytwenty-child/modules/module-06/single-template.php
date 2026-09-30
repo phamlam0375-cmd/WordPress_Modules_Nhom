@@ -35,25 +35,13 @@ get_header();
 			}
 			?>
 
-			<!-- Module 17: Author Box -->
+			<!-- GẮN MODULE 17 (TÁC GIẢ BÀI VIẾT) Ở ĐÂY -->
 			<?php
 			$module_17_path = get_stylesheet_directory() . '/modules/module-17/author-box.php';
 			if (file_exists($module_17_path)) {
 				include $module_17_path;
 			}
 			?>
-
-			<!-- Module 14: Comments -->
-			<?php if (comments_open() || get_comments_number()) : ?>
-				<div class="gcn-comments">
-					<?php
-					$module_comments = get_stylesheet_directory() . '/modules/module-14/comments.php';
-					if (is_readable($module_comments)) {
-						require $module_comments;
-					}
-					?>
-				</div>
-			<?php endif; ?>
 		<?php endwhile; ?>
 	</div>
 </main>

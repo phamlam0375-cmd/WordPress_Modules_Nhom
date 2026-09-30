@@ -1,4 +1,7 @@
-.module-14-comments {
+/* =========================================================
+   1. Khối bình luận ở trang bài viết
+   ========================================================= */
+   .module-14-comments {
     margin-top: 30px;
     padding: 24px;
     background: #fff;
@@ -133,6 +136,240 @@
     cursor: pointer;
 }
 
+/* =========================================================
+   2. Trang tìm kiếm: bố cục 3 cột (trái - giữa - phải)
+   ========================================================= */
+.gcn-search .gcn-wrap {
+    max-width: 1400px;
+    width: 96%;
+    box-sizing: border-box;
+}
+
+.module13-search-layout {
+    display: flex !important;
+    gap: 20px;
+    align-items: flex-start;
+    max-width: 100%;
+}
+
+.module13-search-column {
+    flex: 0 0 210px !important;
+    width: 210px !important;
+    min-width: 0 !important;
+}
+
+.module13-search-main {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+}
+
+.module13-search-right {
+    flex: 0 0 320px !important;
+    width: 320px !important;
+    min-width: 0 !important;
+    max-width: 100%;
+    box-sizing: border-box;
+    align-self: flex-start;
+    position: sticky;
+    top: 20px;
+}
+
+.module13-search-right .module-14-comments {
+    margin-top: 0;
+    padding: 16px;
+}
+
+.module13-search-right .module-14-comments-title {
+    font-size: 20px;
+}
+
+/* =========================================================
+   3. Cột phải: danh sách bình luận mới
+   ========================================================= */
+.module13-search-right .m14-side {
+    overflow: hidden;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.m14-side-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Danh sách dài thì cuộn bên trong, không đẩy vỡ trang */
+.module13-search-right .m14-side-list {
+    max-height: 75vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 4px;
+}
+
+.m14-side-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px dashed #ddd;
+}
+
+.m14-side-item:last-child {
+    border-bottom: 0;
+}
+
+.m14-side-avatar img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.m14-side-body {
+    flex: 1;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.m14-side-name {
+    display: block;
+    font-size: 15px;
+    color: #333;
+}
+
+.m14-side-date {
+    display: block;
+    font-size: 12px;
+    color: #888;
+}
+
+.m14-side-text {
+    margin-top: 6px;
+    padding: 8px 10px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.m14-side-link {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.m14-side-text,
+.m14-side-name,
+.m14-side-link {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* =========================================================
+   4. Nút Trả lời + form trả lời nhanh
+   ========================================================= */
+.m14-reply-btn {
+    display: inline-block;
+    margin: 6px 0 0 10px;
+    padding: 4px 10px;
+    border: 0;
+    background: #d21f56;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.m14-reply-form {
+    margin-top: 8px;
+}
+
+.m14-reply-form[hidden] {
+    display: none;
+}
+
+.m14-reply-form input[type="text"],
+.m14-reply-form input[type="email"],
+.m14-reply-form textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 6px;
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 13px;
+}
+
+.m14-reply-form button[type="submit"] {
+    padding: 6px 14px;
+    border: 0;
+    background: #337ab7;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* =========================================================
+   5. Câu trả lời lồng nhau (thụt gọn, không làm vỡ layout)
+   ========================================================= */
+.m14-side-children {
+    margin: 8px 0 0;
+    padding: 0 0 0 8px;
+    list-style: none;
+    border-left: 2px solid #eee;
+}
+
+.m14-side-item.is-reply {
+    gap: 8px;
+    padding: 6px 0;
+    border-bottom: 0;
+}
+
+.m14-side-item.is-reply .m14-side-avatar img {
+    width: 28px;
+    height: 28px;
+}
+
+.m14-side-item.is-reply .m14-side-text {
+    padding: 6px 8px;
+    font-size: 13px;
+}
+
+.m14-side-mention {
+    color: #337ab7;
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+/* Từ cấp 3 trở đi không thụt thêm nữa */
+.m14-side-children .m14-side-children .m14-side-children {
+    padding-left: 0;
+    border-left: 0;
+}
+
+/* =========================================================
+   6. Responsive
+   ========================================================= */
+@media (max-width: 1100px) {
+    .module13-search-column {
+        display: none !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .module13-search-layout {
+        flex-direction: column;
+    }
+
+    .module13-search-right {
+        flex-basis: auto !important;
+        width: 100% !important;
+        position: static;
+    }
+}
+
 @media (max-width: 600px) {
     .module-14-comments {
         padding: 16px;
@@ -141,4 +378,39 @@
     .module-14-comment-list .children {
         margin-left: 20px;
     }
+}
+.m14-side-replies-wrap {
+    list-style: none;
+    padding: 0;
+}
+
+.m14-side-children {
+    margin: 0 0 8px 16px;
+    padding: 0 0 0 10px;
+    list-style: none;
+    border-left: 2px solid #eee;
+}
+
+.m14-side-item.is-reply {
+    display: flex;
+    gap: 8px;
+    padding: 8px 0;
+    border-bottom: 0;
+}
+
+.m14-side-item.is-reply .m14-side-name,
+.m14-side-item.is-reply .m14-side-date {
+    display: block;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+.m14-side-item.is-reply .m14-side-text {
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+.m14-reply-btn {
+    white-space: nowrap;
 }
