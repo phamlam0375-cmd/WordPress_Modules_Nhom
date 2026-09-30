@@ -1,0 +1,90 @@
+/* ==========================================================================
+   Module 16: Social Share
+   ========================================================================== */
+
+.gcn-module-16-share {
+    margin: 30px 0;
+    padding: 20px 0;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.gcn-share-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.gcn-share-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Nút share chung */
+.gcn-share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    color: var(--share-color, #333);
+    border: 1px solid var(--share-color, #ddd);
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    line-height: 1;
+}
+
+.gcn-share-btn i {
+    font-size: 15px;
+    transition: transform 0.25s ease;
+}
+
+.gcn-share-btn span {
+    white-space: nowrap;
+}
+
+.gcn-share-btn:hover {
+    background: var(--share-color, #333);
+    color: #fff;
+    border-color: var(--share-color, #333);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+}
+
+.gcn-share-btn:hover i {
+    transform: scale(1.15);
+}
+
+/* Nút Copy Link - trạng thái đã copy */
+.gcn-share-copy.is-copied {
+    background: #4caf50;
+    color: #fff;
+    border-color: #4caf50;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 600px) {
+    .gcn-share-buttons {
+        gap: 8px;
+    }
+
+    .gcn-share-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .gcn-share-btn i {
+        font-size: 14px;
+    }
+}

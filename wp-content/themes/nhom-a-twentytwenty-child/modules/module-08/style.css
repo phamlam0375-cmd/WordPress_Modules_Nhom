@@ -1,0 +1,223 @@
+/* ==========================================================================
+   Module 08: Comments Form
+   ========================================================================== */
+
+.gcn-module-08-comments {
+    margin-top: 40px;
+    font-family: inherit;
+}
+
+/* ==========================================================================
+   GIAO DIỆN HÌNH 1: CHƯA ĐĂNG NHẬP (Thiết kế lại)
+   ========================================================================== */
+
+.gcn-comment-guest-box {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 32px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.gcn-comment-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 8px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #1877f2;
+    display: inline-block;
+}
+
+.gcn-comment-note {
+    font-size: 14px;
+    color: #666;
+    margin: 16px 0 24px 0;
+    line-height: 1.5;
+}
+
+.gcn-comment-note .required {
+    color: #e74c3c;
+    font-weight: 700;
+}
+
+/* Form rows */
+.gcn-form-row {
+    margin-bottom: 18px;
+}
+
+.gcn-form-row label,
+.gcn-form-row-inline label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.gcn-form-row label .required,
+.gcn-form-row-inline label .required {
+    color: #e74c3c;
+}
+
+/* Input chung */
+.gcn-form-row input[type="text"],
+.gcn-form-row input[type="email"],
+.gcn-form-row input[type="url"],
+.gcn-form-row textarea {
+    width: 100%;
+    background: #fafafa;
+    border: 1px solid #d5d5d5;
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 15px;
+    font-family: inherit;
+    color: #333;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.gcn-form-row input[type="text"]:focus,
+.gcn-form-row input[type="email"]:focus,
+.gcn-form-row input[type="url"]:focus,
+.gcn-form-row textarea:focus {
+    outline: none;
+    border-color: #1877f2;
+    background: #fff;
+}
+
+.gcn-form-row textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+/* 2 cột cho Tên và Email */
+.gcn-form-row-inline {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.gcn-form-col {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Nút Post Comment */
+.gcn-form-actions {
+    margin-top: 10px;
+}
+
+.gcn-btn-post-comment {
+    background: #2c3e50;
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    padding: 12px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.15s ease;
+}
+
+.gcn-btn-post-comment:hover {
+    background: #1a252f;
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   GIAO DIỆN HÌNH 2: ĐÃ ĐĂNG NHẬP
+   ========================================================================== */
+
+.gcn-comment-social-box {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.gcn-comment-tabs {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 0 20px;
+    background: #fafafa;
+}
+
+.gcn-tab-active {
+    display: inline-block;
+    padding: 14px 5px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 2px solid #1877f2;
+    margin-bottom: -1px;
+}
+
+.gcn-comment-input-wrapper {
+    padding: 18px 20px 8px;
+}
+
+.gcn-comment-textarea {
+    width: 100%;
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 14px 16px;
+    font-size: 15px;
+    font-family: inherit;
+    color: #333;
+    resize: vertical;
+    min-height: 90px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.gcn-comment-textarea:focus {
+    outline: none;
+    border-color: #1877f2;
+    background: #fff;
+}
+
+.gcn-comment-textarea::placeholder {
+    color: #999;
+}
+
+.gcn-comment-actions {
+    padding: 8px 20px 18px;
+    text-align: right;
+}
+
+.gcn-btn-share {
+    background: #1877f2;
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    padding: 10px 32px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.gcn-btn-share:hover {
+    background: #166fe5;
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 600px) {
+    .gcn-comment-guest-box {
+        padding: 20px;
+    }
+
+    .gcn-comment-title {
+        font-size: 20px;
+    }
+
+    .gcn-form-row-inline {
+        flex-direction: column;
+        gap: 0;
+    }
+}

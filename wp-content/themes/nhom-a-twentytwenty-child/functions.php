@@ -65,6 +65,16 @@ if (! function_exists('gcn_twentytwenty_enqueue_styles')) {
 			$module_comments_version
 		);
 
+		// Nạp CSS cho Module 07
+		$module_07_css_path    = get_stylesheet_directory() . '/modules/module-07/style.css';
+		$module_07_css_version = is_readable($module_07_css_path) ? (string) filemtime($module_07_css_path) : $child_theme->get('Version');
+
+		wp_enqueue_style(
+			'gcn-module-07-prevnext',
+			get_stylesheet_directory_uri() . '/modules/module-07/style.css',
+			array('nhom-a-twentytwenty-child'),
+			$module_07_css_version
+		);
 		wp_enqueue_script('jquery');
 		wp_enqueue_script(
 			'gcn-module-01-bootstrap',
@@ -73,6 +83,56 @@ if (! function_exists('gcn_twentytwenty_enqueue_styles')) {
 			'3.3.0',
 			true
 		);
+		// Nạp CSS cho Module 11 (Archive)
+		$module_11_css_path    = get_stylesheet_directory() . '/modules/module-11/style.css';
+		$module_11_css_version = is_readable($module_11_css_path) ? (string) filemtime($module_11_css_path) : $child_theme->get('Version');
+
+		wp_enqueue_style(
+			'gcn-module-11-archive',
+			get_stylesheet_directory_uri() . '/modules/module-11/style.css',
+			array('nhom-a-twentytwenty-child'),
+			$module_11_css_version
+		);
+		// Nạp CSS cho Module 08 (Comments Form)
+		$module_08_css_path    = get_stylesheet_directory() . '/modules/module-08/style.css';
+		$module_08_css_version = is_readable($module_08_css_path) ? (string) filemtime($module_08_css_path) : $child_theme->get('Version');
+
+		wp_enqueue_style(
+			'gcn-module-08-comments',
+			get_stylesheet_directory_uri() . '/modules/module-08/style.css',
+			array('nhom-a-twentytwenty-child'),
+			$module_08_css_version
+		);
+
+		// Nạp CSS & JS cho Module 16 (Social Share)
+		$module_16_css_path    = get_stylesheet_directory() . '/modules/module-16/style.css';
+		$module_16_css_version = is_readable($module_16_css_path) ? (string) filemtime($module_16_css_path) : $child_theme->get('Version');
+
+		wp_enqueue_style(
+			'gcn-module-16-share',
+			get_stylesheet_directory_uri() . '/modules/module-16/style.css',
+			array('nhom-a-twentytwenty-child'),
+			$module_16_css_version
+		);
+
+		$module_16_js_path    = get_stylesheet_directory() . '/modules/module-16/script.js';
+		$module_16_js_version = is_readable($module_16_js_path) ? (string) filemtime($module_16_js_path) : $child_theme->get('Version');
+
+		wp_enqueue_script(
+			'gcn-module-16-share',
+			get_stylesheet_directory_uri() . '/modules/module-16/script.js',
+			array(),
+			$module_16_js_version,
+			true
+		);
+		// Nạp Font Awesome (nếu chưa có)
+		wp_enqueue_style(
+			'gcn-font-awesome',
+			'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css',
+			array(),
+			'6.5.1'
+		);
+		// ============================================
 	}
 }
 
