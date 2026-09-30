@@ -1,75 +1,59 @@
-# Module 13
+# Module 13 – Kết quả tìm kiếm dạng cột trái
 
 ## Mục đích
 
-Module 13 thay danh sách Pages đơn giản bằng các card lấy dữ liệu động từ WordPress. Giao diện hiển thị ba card mỗi hàng trên desktop và một card mỗi hàng ở màn hình nhỏ hơn 768px.
+Module 13 hiển thị lại chính các bài viết của trang kết quả tìm kiếm hiện tại dưới dạng card dọc ở cột trái. Module không truy vấn Page, bài mới hoặc một tập bài viết độc lập.
 
-Module không tự tạo hoặc sửa Trang trong database và không thay đổi widget Pages mặc định của WordPress.
+Danh sách Module 13 luôn có cùng post ID, thứ tự và trang phân trang với cột kết quả chính ở giữa. Module chỉ khác ở cách trình bày.
 
-## Cấu trúc file
+## Nguồn dữ liệu
+
+`nhom_a_module13_get_main_search_posts()` đọc trực tiếp `$wp_query->posts` của main search query. Module không tạo `WP_Query`, không gọi `query_posts()`, không dùng `pre_get_posts` và không hard-code ID.
+
+Template đọc tiêu đề, URL, excerpt và thumbnail bằng post ID. Module không gọi `the_post()` hoặc `setup_postdata()`, vì vậy con trỏ `current_post` của main loop không thay đổi và không cần gọi `wp_reset_postdata()`.
+
+Nếu main search query không có kết quả, Module 13 trả về chuỗi rỗng và không hiển thị dữ liệu cũ.
+
+## Cấu trúc
 
 ```text
 module-13/
 ├── README.md
 ├── functions.php
-├── includes/
-│   └── class-module13-pages-widget.php
-├── templates/
-│   └── pages-grid.php
-└── assets/
-    └── css/
-        └── pages-grid.css
+├── assets/
+│   ├── css/
+│   │   └── search-column.css
+│   └── images/
+│       └── placeholder.svg
+└── templates/
+    └── search-column.php
 ```
 
-- `functions.php`: đăng ký shortcode, widget, CSS, excerpt cho Page và hàm render dùng chung.
-- `includes/class-module13-pages-widget.php`: widget **Module 13 – Pages Cards**.
-- `templates/pages-grid.php`: vòng lặp card và placeholder ảnh.
-- `assets/css/pages-grid.css`: CSS Grid responsive, giới hạn bằng tiền tố `module13-`.
+- `functions.php`: lấy dữ liệu từ main query, đăng ký hook cột trái và enqueue CSS chỉ trên `is_search()`.
+- `templates/search-column.php`: render card theo đúng thứ tự `$wp_query->posts`.
+- `assets/css/search-column.css`: bố cục cột và giao diện đơn giản, chỉ dùng class `module13-`.
+- `assets/images/placeholder.svg`: ảnh dự phòng cho bài không có Featured Image.
 
-## Dùng shortcode
+## Hook tích hợp
 
-Mặc định hiển thị tối đa ba Trang với tiêu đề **Pages**:
+- `nhom_a_search_left_column`: Module 13 tự gắn vào hook này.
+- `nhom_a_search_right_column`: vị trí dành cho Module 14 nếu module đó đăng ký callback.
+- `nhom_a_search_after_columns`: vị trí dành cho Module 15 nếu module đó đăng ký callback.
 
-```text
-[module13_pages]
-```
+Các hook nằm ngoài vòng lặp kết quả chính. Module 13 không thay đổi markup card, truy vấn hoặc phân trang ở cột giữa.
 
-Tùy chỉnh số lượng từ 1 đến 12 và tiêu đề:
+## Giao diện và responsive
 
-```text
-[module13_pages limit="3" title="Pages"]
-```
+- Mỗi kết quả nằm trên một hàng riêng trong cột trái.
+- Ảnh có tỷ lệ `16 / 9`, dùng `object-fit: cover` và không tràn cột.
+- Card không bo góc, không đổ bóng và không có hiệu ứng phóng to.
+- Dưới 901px, các cột chuyển thành một cột; Module 13 vẫn đứng trước kết quả chính.
+- Module không dùng JavaScript, `position: absolute` hoặc `margin-left` cố định.
 
-Nếu shortcode nằm trong một Trang, Trang hiện tại sẽ không xuất hiện trong danh sách.
+## Cách kiểm tra
 
-## Thêm widget
-
-1. Vào **Giao diện → Widget** hoặc màn hình quản lý widget tương ứng của WordPress.
-2. Xóa widget **Pages** mặc định nếu không còn cần dùng.
-3. Thêm widget **Module 13 – Pages Cards** vào **Footer #1** hoặc **Footer #2** của Twenty Twenty.
-4. Nhập tiêu đề và số lượng Trang từ 1 đến 12 rồi lưu.
-
-Shortcode và widget gọi chung `nhom_a_module13_render_pages_cards()`, nên thứ tự, nội dung và giao diện card giống nhau.
-
-## Tạo ba Trang thử nghiệm
-
-1. Vào **Trang → Thêm trang mới**.
-2. Tạo ba Trang với tiêu đề và nội dung khác nhau, sau đó bấm **Đăng**.
-3. Có thể đặt **Thứ tự** trong thuộc tính Trang; module sắp xếp theo `menu_order`, sau đó theo tiêu đề tăng dần.
-4. Module chỉ truy vấn các Trang có trạng thái `publish` và không tự tạo dữ liệu mẫu.
-
-## Đặt ảnh đại diện và excerpt
-
-1. Mở Trang cần sửa trong trình soạn thảo.
-2. Chọn **Ảnh đại diện**, tải hoặc chọn ảnh trong thư viện Media rồi cập nhật Trang.
-3. Nhập nội dung ngắn trong trường **Excerpt/Tóm tắt**. Module tự bổ sung hỗ trợ excerpt cho Pages.
-4. Nếu không có excerpt, module loại shortcode khỏi nội dung và rút gọn khoảng 20 từ.
-5. Nếu không có ảnh đại diện, card hiển thị placeholder **Chưa có ảnh**.
-
-## Kiểm tra responsive
-
-1. Chèn shortcode hoặc thêm widget rồi mở trang frontend.
-2. Ở chiều rộng từ 768px trở lên, xác nhận mỗi hàng có ba card; card thứ tư tự xuống hàng mới.
-3. Thu nhỏ trình duyệt xuống 767px hoặc dùng chế độ thiết bị của DevTools.
-4. Xác nhận mỗi hàng chỉ có một card, ảnh giữ cùng tỷ lệ và nội dung không tràn khỏi card.
-
+1. Tìm `an toàn thông tin` và so sánh số lượng, tiêu đề, thứ tự cùng URL giữa Module 13 và cột giữa.
+2. Tìm một từ khóa khác và xác nhận cả hai cột cùng thay đổi.
+3. Tìm một chuỗi không tồn tại và xác nhận Module 13 không hiển thị card cũ.
+4. Nếu kết quả có nhiều trang, chuyển trang và so sánh hai cột lần nữa.
+5. Mở trang chủ hoặc bài viết để xác nhận Module 13 không xuất hiện và CSS module không được enqueue.
