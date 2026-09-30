@@ -1,0 +1,98 @@
+.module-03-footer {
+    background-color: #005A43; /* Màu xanh lá đậm chuẩn mẫu */
+    color: #ffffff;
+    padding: 40px 20px 30px 20px;
+    font-family: Arial, sans-serif;
+    margin-top: 40px;
+    clear: both;
+}
+
+.module-03-footer .footer-widgets {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 30px;
+}
+
+.module-03-footer .footer-column {
+    flex: 1;
+    max-width: 300px;
+}
+
+.module-03-footer .widget-title {
+    font-size: 18px;
+    font-weight: bold;
+    border-left: 3px solid #ffffff;
+    padding-left: 10px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.module-03-footer .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.module-03-footer .footer-links li {
+    margin-bottom: 10px;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.module-03-footer .footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.module-03-footer .footer-links a:hover {
+    opacity: 0.8;
+}
+
+/* Sửa phần Social Icons nằm giữa */
+.module-03-footer .footer-bottom {
+    text-align: center;
+    padding-top: 25px;
+}
+
+.module-03-footer .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.module-03-footer .social-icons a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: transparent;
+    transition: transform 0.2s;
+}
+
+.module-03-footer .social-icons a:hover {
+    transform: scale(1.15);
+}
+
+.module-03-footer .copyright-text {
+    font-size: 12px;
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin: 0;
+    text-align: center;
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="module24-placeholder-title module24-placeholder-description">
+  <title id="module24-placeholder-title">Chưa có ảnh</title>
+  <desc id="module24-placeholder-description">Ảnh dự phòng cho bài viết chưa có ảnh đại diện</desc>
+  <rect width="1600" height="900" fill="#e9e9e9"/>
+  <path d="M430 650 675 405l170 170 105-105 220 180H430Z" fill="#c7c7c7"/>
+  <circle cx="1060" cy="300" r="72" fill="#c7c7c7"/>
+  <text x="800" y="770" fill="#555" font-family="Arial, sans-serif" font-size="62" text-anchor="middle">Chưa có ảnh</text>
+</svg>
