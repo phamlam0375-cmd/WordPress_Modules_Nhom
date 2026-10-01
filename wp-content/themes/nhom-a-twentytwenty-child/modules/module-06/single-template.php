@@ -2,10 +2,26 @@
 
 /** Trang chi tiết bài viết: khung nội dung và vòng tròn ngày đăng. */
 get_header();
+
+// Cột trái / phải của trang chi tiết (vd: Module 09, Module 10) gắn qua hook.
+$single_has_left_column  = false !== has_action('nhom_a_single_left_column');
+$single_has_right_column = false !== has_action('nhom_a_single_right_column');
+$single_has_columns      = $single_has_left_column || $single_has_right_column;
 ?>
-<main id="site-content" class="gcn-single" role="main">
+<main id="site-content" class="gcn-single<?php echo $single_has_columns ? ' gcn-single--has-columns' : ''; ?>" role="main">
 	<div class="gcn-wrap">
 		<?php while (have_posts()) : the_post(); ?>
+			<?php do_action('nhom_a_single_before_content'); ?>
+
+			<?php if ($single_has_columns) : ?>
+			<div class="nhom-a-single-layout">
+				<?php if ($single_has_left_column) : ?>
+					<aside class="nhom-a-single-left">
+						<?php do_action('nhom_a_single_left_column'); ?>
+					</aside>
+				<?php endif; ?>
+			<?php endif; ?>
+
 			<article <?php post_class('gcn-detail-card'); ?> id="post-<?php the_ID(); ?>">
 				<header class="gcn-detail-header">
 					<h1><?php echo esc_html(get_the_title()); ?></h1>
@@ -41,6 +57,16 @@ get_header();
 				?>
 			</article>
 
+			<?php if ($single_has_columns) : ?>
+				<?php if ($single_has_right_column) : ?>
+					<aside class="nhom-a-single-right">
+						<?php do_action('nhom_a_single_right_column'); ?>
+					</aside>
+				<?php endif; ?>
+			</div>
+			<?php endif; ?>
+
+			<div class="nhom-a-single-bottom">
 			<!-- Module 07: Prev/Next Post -->
 			<?php
 			if (function_exists('gcn_render_module_07_prev_next')) {
@@ -56,12 +82,15 @@ get_header();
 			}
 			?>
 
+			<?php do_action('nhom_a_single_before_comments'); ?>
+
 			<!-- Module 08: Comments Form -->
 			<?php
 			if (function_exists('gcn_render_module_08_comments')) {
 				gcn_render_module_08_comments();
 			}
 			?>
+			</div>
 		<?php endwhile; ?>
 	</div>
 </main>

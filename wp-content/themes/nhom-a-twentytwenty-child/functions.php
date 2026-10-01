@@ -144,7 +144,10 @@ if (! function_exists('nhom_a_load_module_functions')) {
 	/** Nạp file functions.php của module nếu module đó đã có code PHP. */
 	function nhom_a_load_module_functions()
 	{
-		for ($module_number = 1; $module_number <= 20; $module_number++) {
+		// Module 01-20 và các module tự chọn đã thống nhất số (22, 23, 25).
+		$module_numbers = array_merge(range(1, 20), array(22, 23, 25));
+
+		foreach ($module_numbers as $module_number) {
 			$module_file = get_stylesheet_directory() . sprintf(
 				'/modules/module-%02d/functions.php',
 				$module_number
