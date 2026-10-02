@@ -1,0 +1,119 @@
+/* ==========================================================================
+   Module 22 (tự chọn): Related posts - Bài viết liên quan
+   ========================================================================== */
+
+.module22-related {
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 30px 0;
+  /* Twenty Twenty đặt section { padding: 8rem 0 } */
+  padding: 0;
+}
+
+.module22-related__title {
+  border-bottom: 2px solid #e5e5e5;
+  color: #222;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: normal;
+  margin: 0 0 24px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+/* Gạch vàng dưới tiêu đề */
+.module22-related__title::after {
+  background: #f6c12c;
+  bottom: -2px;
+  content: "";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  width: 60px;
+}
+
+.module22-related__grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.module22-related__card {
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.module22-related__card:hover,
+.module22-related__card:focus {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  color: inherit;
+  text-decoration: none;
+  transform: translateY(-3px);
+}
+
+.module22-related__thumb {
+  aspect-ratio: 16 / 9;
+  display: block;
+  overflow: hidden;
+}
+
+.module22-related__thumb img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* Không có ảnh đại diện: ô xanh ngọc với chữ cái đầu */
+.module22-related__noimg {
+  align-items: center;
+  background: linear-gradient(135deg, #4fb8b8, #6cc7c9);
+  color: #fff;
+  display: flex;
+  font-size: 48px;
+  font-weight: 700;
+  height: 100%;
+  justify-content: center;
+}
+
+.module22-related__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px 20px;
+}
+
+.module22-related__cat {
+  color: #4fb8b8;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.module22-related__name {
+  color: #333;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.module22-related__card:hover .module22-related__name {
+  color: #4a90d9;
+}
+
+.module22-related__date {
+  color: #999;
+  font-size: 13px;
+  margin-top: auto;
+}
+
+/* Điện thoại: mỗi dòng 1 bài */
+@media (max-width: 700px) {
+  .module22-related__grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,62 @@
+/* ==========================================================================
+   Module 11: Archive (Xem nhiều)
+   ========================================================================== */
+
+.gcn-module-11-archive {
+    margin-bottom: 0;
+    font-family: inherit;
+}
+
+.gcn-archive-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 15px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #c00;
+    display: inline-block;
+}
+
+.gcn-archive-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+}
+
+.gcn-archive-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.gcn-archive-number {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 30px;
+    text-align: center;
+}
+
+.gcn-archive-link {
+    font-size: 14px;
+    font-weight: 400;
+    color: #1a1a1a;
+    text-decoration: none;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+.gcn-archive-link:hover {
+    color: #c00;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .gcn-archive-grid {
+        grid-template-columns: 1fr;
+    }
+}

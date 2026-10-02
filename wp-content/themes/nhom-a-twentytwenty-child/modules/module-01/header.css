@@ -75,4 +75,21 @@
         top: -7px;
     }
 }
+@media (min-width: 768px) {
+    .navbar-icon-top .navbar-brand {
+        display: flex;
+        align-items: center;
+        height: 70px;
+        padding: 0 20px;
+        line-height: 1;
+        font-size: 22px;
+        font-weight: 700;
+        color: #333;
+        text-decoration: none;
+    }
 
+    .navbar-icon-top .navbar-brand:hover,
+    .navbar-icon-top .navbar-brand:focus {
+        color: #d21f56;
+    }
+}

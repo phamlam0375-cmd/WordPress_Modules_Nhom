@@ -1,0 +1,85 @@
+/* ==========================================================================
+   Module 15: Last posts - https://bootsnipp.com/snippets/xrKXW
+   ========================================================================== */
+
+.module15-last-posts {
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 30px 0 0;
+  /* Twenty Twenty đặt section { padding: 8rem 0 } */
+  padding: 30px 30px 10px;
+}
+
+.module15-last-posts__title {
+  color: #212529;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: normal;
+  margin: 0 0 20px;
+}
+
+.module15-last-posts__timeline {
+  list-style: none;
+  margin: 0 0 0 20px;
+  padding: 0;
+  position: relative;
+}
+
+/* Đường kẻ dọc */
+.module15-last-posts__timeline::before {
+  background: #d4d9df;
+  bottom: 0;
+  content: "";
+  left: 9px;
+  position: absolute;
+  top: 0;
+  width: 2px;
+}
+
+.module15-last-posts__item {
+  margin: 0;
+  padding: 0 0 20px 40px;
+  position: relative;
+}
+
+/* Vòng tròn */
+.module15-last-posts__item::before {
+  background: #fff;
+  border: 3px solid #22c0e8;
+  border-radius: 50%;
+  box-sizing: border-box;
+  content: "";
+  height: 20px;
+  left: 0;
+  position: absolute;
+  top: 1px;
+  width: 20px;
+}
+
+.module15-last-posts__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  justify-content: space-between;
+}
+
+.module15-last-posts__head a,
+.module15-last-posts__head time {
+  color: #007bff;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.module15-last-posts__head a:hover,
+.module15-last-posts__head a:focus {
+  text-decoration: underline;
+}
+
+.module15-last-posts__excerpt {
+  color: #212529;
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 4px 0 0;
+}

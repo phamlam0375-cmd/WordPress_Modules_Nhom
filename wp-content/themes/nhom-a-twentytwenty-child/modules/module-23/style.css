@@ -1,0 +1,82 @@
+/* ==========================================================================
+   Module 23 (tự chọn): Tags - Đám mây thẻ
+   ========================================================================== */
+
+.module23-tags {
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  box-sizing: border-box;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 30px 0 0;
+  /* Twenty Twenty đặt section { padding: 8rem 0 } */
+  padding: 30px;
+}
+
+.module23-tags__title {
+  color: #212529;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: normal;
+  margin: 0 0 20px;
+}
+
+.module23-tags__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.module23-tags__list li {
+  margin: 0;
+}
+
+.module23-tags__item {
+  align-items: center;
+  border: 1px solid #4fb8b8;
+  border-radius: 20px;
+  color: #2f8f8f;
+  display: inline-flex;
+  font-size: 14px;
+  gap: 8px;
+  padding: 5px 6px 5px 14px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* Mức độ theo số bài viết: càng nhiều càng đậm */
+.module23-tags__item--2 {
+  background: #e6f5f5;
+  font-size: 15px;
+}
+
+.module23-tags__item--3 {
+  background: #4fb8b8;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.module23-tags__count {
+  background: #fff;
+  border-radius: 12px;
+  color: #2f8f8f;
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 24px;
+  padding: 1px 6px;
+  text-align: center;
+}
+
+.module23-tags__item--1 .module23-tags__count {
+  background: #e6f5f5;
+}
+
+.module23-tags__item:hover,
+.module23-tags__item:focus {
+  background: #2f8f8f;
+  color: #fff;
+  text-decoration: none;
+}
