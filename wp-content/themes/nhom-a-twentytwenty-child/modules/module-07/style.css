@@ -1,0 +1,148 @@
+/* ==========================================================================
+   Module 07: Previous / Next Post
+   ========================================================================== */
+
+.gcn-module-07-prevnext {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 30px 0;
+    margin-top: 40px;
+    border-top: 1px solid #e0e0e0;
+    font-family: inherit;
+}
+
+.gcn-nav-item {
+    flex: 1 1 50%;
+    max-width: 50%;
+}
+
+/* Previous post: Căn trái */
+.gcn-nav-prev {
+    text-align: left;
+}
+
+/* Next post: Căn phải */
+.gcn-nav-next {
+    text-align: right;
+}
+
+/* Link chung */
+.gcn-nav-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #1a1a1a;
+    transition: color 0.3s ease;
+}
+
+.gcn-nav-link:hover {
+    color: #0073aa;
+    text-decoration: none;
+}
+
+/* --- Giao diện Hình 1: Chưa đăng nhập --- */
+.gcn-nav-label {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+    font-weight: 400;
+}
+
+.gcn-nav-label .gcn-arrow {
+    font-size: 16px;
+}
+
+.gcn-nav-title {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #1a1a1a;
+}
+
+/* --- Giao diện Hình 2: Đã đăng nhập (dạng phân số + năm) --- */
+.is-logged-in .gcn-nav-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+/* Next post: Đảo ngược thứ tự để ngày tháng nằm bên phải tiêu đề */
+.is-logged-in .gcn-nav-next .gcn-nav-link {
+    flex-direction: row-reverse;
+}
+
+/* Khối bọc phân số và năm */
+.gcn-date-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+/* Khối phân số (ngày trên, tháng dưới) */
+.gcn-date-fraction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    font-weight: 700;
+    color: #1a1a1a;
+    min-width: 36px;
+}
+
+.gcn-day {
+    font-size: 18px;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 2px;
+    width: 100%;
+    text-align: center;
+}
+
+.gcn-month {
+    font-size: 18px;
+    padding-top: 2px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Năm: hiển thị nhỏ, nằm bên cạnh phân số, căn lên trên */
+.gcn-year {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a1a;
+    line-height: 1;
+    padding-top: 2px;
+}
+
+.is-logged-in .gcn-nav-title {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #1a1a1a;
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+    .gcn-module-07-prevnext {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .gcn-nav-item {
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+
+    .gcn-nav-prev,
+    .gcn-nav-next {
+        text-align: left;
+    }
+
+    .is-logged-in .gcn-nav-next .gcn-nav-link {
+        flex-direction: row;
+    }
+}
