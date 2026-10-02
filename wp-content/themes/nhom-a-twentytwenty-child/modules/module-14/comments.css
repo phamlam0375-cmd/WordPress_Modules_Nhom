@@ -414,3 +414,15 @@
 .m14-reply-btn {
     white-space: nowrap;
 }
+/* Cột bình luận cách phía trên bằng 2 cột bên trái */
+.module13-search-right {
+    margin-top: 0 !important;
+    padding-top: 79px !important;
+    box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+    .module13-search-right {
+        padding-top: 20px !important;
+    }
+}
