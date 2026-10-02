@@ -1,0 +1,81 @@
+/* ==========================================================================
+   Module 25 (tự chọn): Thống kê website
+   ========================================================================== */
+
+.module25-stats {
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin-top: 40px;
+  /* Twenty Twenty đặt section { padding: 8rem 0 } */
+  padding: 0;
+  text-align: center;
+}
+
+.module25-stats__title {
+  color: #222;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: normal;
+  margin: 0 0 24px;
+}
+
+.module25-stats__grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.module25-stats__item {
+  background: #4fb8b8;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 24px 16px;
+}
+
+/* Xen kẽ 2 màu xanh ngọc */
+.module25-stats__item:nth-child(even) {
+  background: #6cc7c9;
+}
+
+.module25-stats__icon {
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.module25-stats__value {
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.module25-stats__label {
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.module25-stats__updated {
+  color: #777;
+  font-size: 14px;
+  margin: 20px 0 0;
+}
+
+.module25-stats__updated a {
+  color: #4a90d9;
+}
+
+/* Điện thoại: 2 cột */
+@media (max-width: 700px) {
+  .module25-stats__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .module25-stats__value {
+    font-size: 30px;
+  }
+}

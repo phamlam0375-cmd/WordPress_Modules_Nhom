@@ -1,0 +1,94 @@
+/* ==========================================================================
+   Module 10: Recent post - http://fit.tdc.edu.vn
+   ========================================================================== */
+
+.module10-recent {
+  background: #4fb8b8;
+  color: #fff;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* Twenty Twenty đặt section { padding: 8rem 0 } */
+  padding: 0;
+}
+
+.module10-recent__list {
+  list-style: none;
+  margin: 0;
+  padding: 20px 24px;
+}
+
+.module10-recent__item {
+  align-items: center;
+  display: flex;
+  gap: 22px;
+  margin: 0;
+  padding: 8px 0;
+}
+
+.module10-recent__link {
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.module10-recent__link:hover,
+.module10-recent__link:focus {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.module10-recent__empty {
+  margin: 0;
+  padding: 20px 24px;
+}
+
+.module10-recent__all {
+  background: #6cc7c9;
+  color: #fff;
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 10px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.module10-recent__all:hover,
+.module10-recent__all:focus {
+  background: #3fa3a3;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Ngày đăng dạng phân số: 13/08 23 */
+.module10-date {
+  align-items: center;
+  color: #fff;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  gap: 2px;
+  line-height: 1;
+  min-width: 40px;
+}
+
+.module10-date__frac {
+  display: inline-flex;
+  flex-direction: column;
+  font-size: 16px;
+  text-align: center;
+}
+
+.module10-date__day {
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+}
+
+.module10-date__month {
+  padding-top: 2px;
+}
+
+.module10-date__year {
+  font-size: 20px;
+}

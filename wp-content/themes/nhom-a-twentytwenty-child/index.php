@@ -40,6 +40,13 @@ get_header(); // Gọi header (Module 01)
         </aside>
 
     </div>
+
+    <?php if ( false !== has_action( 'nhom_a_home_after_columns' ) ) : ?>
+        <!-- Hàng dưới 3 cột, trên Footer (vd: Module 25) -->
+        <div class="section-inner nhom-a-home-bottom">
+            <?php do_action( 'nhom_a_home_after_columns' ); ?>
+        </div>
+    <?php endif; ?>
 </main>
 
 <?php 

@@ -1,0 +1,50 @@
+/* ==========================================================================
+   Module 20 (tự chọn): Breadcrumb
+   ========================================================================== */
+
+.module20-breadcrumb {
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 14px;
+  margin: 0 0 24px;
+}
+
+.module20-breadcrumb__list {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  border-left: 4px solid #f6c12c;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 0;
+  list-style: none;
+  margin: 0;
+  padding: 12px 20px;
+}
+
+.module20-breadcrumb__item {
+  color: #777;
+  margin: 0;
+  min-width: 0;
+}
+
+/* Dấu phân cách "›" giữa các mục */
+.module20-breadcrumb__item + .module20-breadcrumb__item::before {
+  color: #bbb;
+  content: "›";
+  padding: 0 10px;
+}
+
+.module20-breadcrumb__item a {
+  color: #4a90d9;
+  text-decoration: none;
+}
+
+.module20-breadcrumb__item a:hover,
+.module20-breadcrumb__item a:focus {
+  text-decoration: underline;
+}
+
+.module20-breadcrumb__item span[aria-current] {
+  color: #333;
+  font-weight: 600;
+}
