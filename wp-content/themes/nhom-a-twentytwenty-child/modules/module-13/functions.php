@@ -58,7 +58,7 @@ if ( ! function_exists( 'nhom_a_module13_get_search_excerpt' ) ) {
 		$summary_source = preg_replace( '/\[[^\]]*\]/u', '', $summary_source );
 		$summary_source = is_string( $summary_source ) ? $summary_source : '';
 
-		return wp_trim_words( wp_strip_all_tags( $summary_source ), 20, '…' );
+		return wp_trim_words( wp_strip_all_tags( $summary_source ), 20, '...' );
 	}
 }
 

@@ -6,7 +6,10 @@
 }
 
 .module13-search-layout--has-right {
-	grid-template-columns: minmax(190px, 210px) minmax(0, 1fr) minmax(190px, 210px);
+	grid-template-columns:
+		minmax(190px, 210px)
+		minmax(0, 1fr)
+		minmax(190px, 210px);
 }
 
 .module13-search-layout--without-left {
@@ -40,17 +43,21 @@
 	gap: 18px;
 }
 
+/* Card chứa phần nội dung và hàng nút theo chiều dọc. */
 .module13-search-card {
+	display: flex;
+	flex-direction: column;
 	min-width: 0;
 	margin: 0;
 	overflow: hidden;
 	border: 1px solid #dedede;
 }
 
+/* Không dùng height: 100% để tránh đẩy nút ra ngoài card. */
 .module13-search-link {
 	display: flex;
+	flex: 1;
 	min-width: 0;
-	height: 100%;
 	flex-direction: column;
 	color: inherit;
 	text-decoration: none;
@@ -113,6 +120,46 @@
 	overflow-wrap: anywhere;
 }
 
+/* Căn nút Xem tiếp ở góc dưới bên phải. */
+.module13-search-actions {
+	display: flex;
+	justify-content: flex-end;
+	padding: 0 14px 14px;
+}
+
+.module13-search-read-more {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 40px;
+	max-width: 100%;
+	box-sizing: border-box;
+	padding: 8px 14px;
+	border: 1px solid #b50032;
+	background: #b50032;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 1.4;
+	text-align: center;
+	text-decoration: none;
+	overflow-wrap: anywhere;
+}
+
+.module13-search-read-more:hover,
+.module13-search-read-more:focus-visible {
+	border-color: #850025;
+	background: #850025;
+	color: #fff;
+	text-decoration: underline;
+}
+
+.module13-search-read-more:focus-visible {
+	outline: 2px solid #1f4f75;
+	outline-offset: 2px;
+}
+
+/* Tablet và điện thoại: các cột xếp dọc. */
 @media (max-width: 900px) {
 	.module13-search-layout,
 	.module13-search-layout--has-right,

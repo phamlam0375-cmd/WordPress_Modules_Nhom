@@ -1,8 +1,9 @@
 <?php
-// Nhúng file CSS của module 02
-wp_enqueue_style('module-02-css', get_stylesheet_directory_uri() . '/modules/module-02/module-2.css');
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 
-// Lấy danh sách bài viết mới nhất (mặc định 3 bài)
+// Lấy 10 bài viết đã xuất bản mới nhất.
 $args = array(
     'post_type'      => 'post',
     'posts_per_page' => 10,
@@ -16,7 +17,15 @@ $query = new WP_Query($args);
     <?php if ($query->have_posts()) : ?>
         <div class="news-list">
             <?php while ($query->have_posts()) : $query->the_post(); ?>
+                <?php $module02_image_url = nhom_a_module02_post_image_url( get_the_ID() ); ?>
                 <article class="news-item">
+                    <a class="module02-post-image-link" href="<?php echo esc_url( get_permalink() ); ?>" aria-label="<?php echo esc_attr( get_the_title() ); ?>">
+                        <?php if ( $module02_image_url ) : ?>
+                            <img class="module02-post-image" src="<?php echo esc_url( $module02_image_url ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" loading="lazy" decoding="async">
+                        <?php else : ?>
+                            <span class="module02-image-placeholder"><?php esc_html_e( 'Chưa có ảnh', 'nhom-a-twentytwenty-child' ); ?></span>
+                        <?php endif; ?>
+                    </a>
                     <div class="news-date">
                         <span class="day"><?php echo get_the_date('d'); ?></span>
                         <span class="month">THÁNG <?php echo get_the_date('m'); ?></span>

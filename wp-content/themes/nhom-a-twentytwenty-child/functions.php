@@ -162,11 +162,11 @@ if (! function_exists('nhom_a_load_module_functions')) {
 nhom_a_load_module_functions();
 
 /** In 1 bình luận (gốc hoặc câu trả lời) cho cột phải trang tìm kiếm. */
-function m14_render_side_item($c, $current_url, $is_reply = false)
+function m14_render_side_item($c, $current_url, $is_reply = false, $is_hidden = false)
 {
 	$parent = $is_reply ? get_comment($c->comment_parent) : null;
 ?>
-	<li class="m14-side-item<?php echo $is_reply ? ' is-reply' : ''; ?>">
+	<li class="m14-side-item<?php echo $is_reply ? ' is-reply' : ''; ?>" <?php echo $is_hidden ? ' hidden' : ''; ?>>
 		<div class="m14-side-avatar"><?php echo get_avatar($c, $is_reply ? 28 : 40); ?></div>
 		<div class="m14-side-body">
 			<strong class="m14-side-name"><?php echo esc_html($c->comment_author); ?></strong>
@@ -255,13 +255,24 @@ add_action('nhom_a_search_right_column', function () {
 					<?php m14_render_side_item($c, $current_url); ?>
 					<?php
 					$replies = m14_get_all_replies($c->comment_ID);
+					$reply_list_id = 'm14-replies-' . absint($c->comment_ID);
 					if ($replies) : ?>
 						<li class="m14-side-replies-wrap">
-							<ul class="m14-side-children">
-								<?php foreach ($replies as $r) {
-									m14_render_side_item($r, $current_url, true);
+							<ul class="m14-side-children" id="<?php echo esc_attr($reply_list_id); ?>">
+								<?php foreach ($replies as $reply_index => $r) {
+									m14_render_side_item($r, $current_url, true, $reply_index >= 2);
 								} ?>
 							</ul>
+							<?php if (count($replies) > 2) : ?>
+								<button
+									type="button"
+									class="m14-load-more-replies"
+									aria-controls="<?php echo esc_attr($reply_list_id); ?>"
+									aria-label="<?php echo esc_attr(sprintf('Xem thêm câu trả lời cho bình luận của %s', $c->comment_author)); ?>">
+									Xem thêm
+								</button>
+							<?php endif; ?>
+							<p class="m14-replies-status" role="status" aria-live="polite"></p>
 						</li>
 					<?php endif; ?>
 				<?php endforeach; ?>
@@ -270,8 +281,64 @@ add_action('nhom_a_search_right_column', function () {
 			<p>Chưa có bình luận.</p>
 		<?php endif; ?>
 	</section>
+	<style>
+		.m14-side .m14-side-item[hidden],
+		.m14-side .m14-load-more-replies[hidden] {
+			display: none !important;
+		}
+
+		.m14-side .m14-load-more-replies {
+			display: inline-block;
+			margin: 4px 0 12px 16px;
+			padding: 6px 12px;
+			border: 0;
+			background: #d21f56;
+			color: #fff;
+			font-size: 13px;
+			cursor: pointer;
+		}
+
+		.m14-side .m14-load-more-replies:focus-visible {
+			outline: 2px solid #337ab7;
+			outline-offset: 2px;
+		}
+
+		.m14-side .m14-replies-status {
+			margin: 0 0 8px 16px;
+			font-size: 12px;
+		}
+
+		.m14-side .m14-replies-status:empty {
+			display: none;
+		}
+	</style>
 	<script>
 		document.addEventListener('click', function(e) {
+			var moreButton = e.target.closest('.m14-load-more-replies');
+			if (moreButton) {
+				var list = document.getElementById(moreButton.getAttribute('aria-controls'));
+				if (!list) return;
+
+				var hiddenReplies = Array.prototype.filter.call(list.children, function(item) {
+					return item.classList.contains('m14-side-item') && item.hidden;
+				});
+				hiddenReplies.slice(0, 3).forEach(function(item) {
+					item.hidden = false;
+				});
+
+				var remaining = Math.max(0, hiddenReplies.length - 3);
+				var status = moreButton.parentElement.querySelector('.m14-replies-status');
+				if (status) {
+					status.textContent = 'Đang hiển thị ' + (list.children.length - remaining) + ' / ' + list.children.length + ' câu trả lời.';
+				}
+				if (remaining === 0) {
+					// Keep keyboard focus in this reply group before hiding the button.
+					var revealedLink = hiddenReplies.length ? hiddenReplies[0].querySelector('button, a, input, textarea') : null;
+					if (revealedLink) revealedLink.focus();
+					moreButton.hidden = true;
+				}
+				return;
+			}
 			var btn = e.target.closest('.m14-reply-btn');
 			if (!btn) return;
 			var form = document.getElementById(btn.getAttribute('data-target'));
